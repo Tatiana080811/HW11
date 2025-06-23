@@ -14,56 +14,46 @@ import java.time.LocalDate;
             } else {
                 System.out.println(year + " — год не является високосным.");
             }
+        }
 
+        public class CheckingSystemYearPhone {
 
-            class appInstaller {
+            public static void main(String[] args) {
+                checkSystemYear(0, 2004);
+            }
 
-                public static void main(String[] args) {
-                    installApp(0, 2024);
-                }
-
-                public static void installApp(int clientOS, int clientDeviceYear) {
-                    int currentYear = LocalDate.now().getYear();
-                    boolean isOldDevice = clientDeviceYear < currentYear;
-                    String platformName = (clientOS == 0) ? "iOS" : "Android";
-                    if (isOldDevice) {
-                        System.out.println("Установите облегченную версию приложения для " + platformName + " по ссылке");
-                    } else {
-                        System.out.println("Установите версию приложения для " + platformName + " по ссылке");
-                    }
+            public static void checkSystemYear(int clientOS, int clientDeviceYear) {
+                int currentYear = LocalDate.now().getYear();
+                boolean isOldDevice = clientDeviceYear < currentYear;
+                String platformName = (clientOS == 0) ? "iOS" : "Android";
+                if (isOldDevice) {
+                    System.out.println("Установите облегченную версию приложения для " + platformName + " по ссылке");
+                } else {
+                    System.out.println("Установите версию приложения для " + platformName + " по ссылке");
                 }
             }
 
-            public class CardDelivery {
-
-                public static int calculateDeliveryDays(int deliveryDistance) {
-                    if (deliveryDistance <= 20) {
-                        return 1;
-                    } else if (deliveryDistance <= 60) {
-                        return 2;
-                    } else if (deliveryDistance <= 100) {
-                        return 3;
-                    } else {
-                        throw new IllegalArgumentException("Доставка не предусмотрена для расстояний свыше 100 км.");
-                    }
-                }
-
+            public class CheckingDistanceDeterminindDeliveryTime {
                 public static void main(String[] args) {
                     int deliveryDistance = 95;
-                    try {
-                        int deliveryDays = calculateDeliveryDays(deliveryDistance);
+                    int deliveryDays = calculateDeliveryDays(deliveryDistance);
+                    if (deliveryDays >= 0) {
                         System.out.println("Потребуется дней: " + deliveryDays);
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage());
+                    } else {
+                        System.out.println("Доставка не осуществляется.");
+                    }
+                }
+                private static int calculateDeliveryDays(int distance) {
+                    if (distance <= 20) {
+                        return 1;
+                    } else if (distance <= 60) {
+                        return 2;
+                    } else if (distance <= 100) {
+                        return 3;
+                    } else {
+                        return -1;
                     }
                 }
             }
         }
     }
-
-
-
-
-
-
-
